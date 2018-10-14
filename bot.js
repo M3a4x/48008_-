@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const fs = require('fs');
+const ms = require("ms");
 const config = require('./Configuration.json');
 const tpoints = JSON.parse(fs.readFileSync('./Text.json', 'UTF8'));
 const vpoints = JSON.parse(fs.readFileSync('./Voice.json', 'UTF8'));
@@ -13,13 +15,6 @@ client.on('message', message => { // Leaked by [ @M3a4x ]
     	message.reply('pong');
   	}
 });
-
-
-
-const ms = require("ms");
-var fs = require('fs');
-
-
 
 
 client.on('ready', function(){ // Leaked by [ @M3a4x ]
