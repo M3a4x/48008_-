@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const config = require('./Configuration.json');
+const tpoints = JSON.parse(fs.readFileSync('./Text.json', 'UTF8'));
+const vpoints = JSON.parse(fs.readFileSync('./Voice.json', 'UTF8'));
  const prefix = "$";
 client.on('ready', () => { // Leaked by [ @M3a4x ]
     console.log('I am ready!');
@@ -1220,14 +1223,10 @@ client.on("message", message => {
     
   });
 
-const client = new Discord.Client({disableEveryone: true, maxMessagesCache: 1});
-const config = require('./Configuration.json');
-const tpoints = JSON.parse(fs.readFileSync('./Text.json', 'UTF8'));
-const vpoints = JSON.parse(fs.readFileSync('./Voice.json', 'UTF8'));
 client.config = config;
 client.login(process.env.BOT_TOKEN);
 client.on('ready',async () => {
-  console.log(`.Codes TOP.`);
+  console.log(`.Leaderboard.`);
   client.users.forEach(m => {
     if(m.bot) return;
     if(!tpoints[m.id]) tpoints[m.id] = {points: 0, id: m.id};
@@ -1259,7 +1258,7 @@ client.on('message',async message => {
  
     let topRoyale = new Discord.RichEmbed();
     topRoyale.setAuthor(message.author.username, message.author.avatarURL);
-    topRoyale.setTitle('# " Top');
+    topRoyale.setTitle(':clipboard: Guild Score Leaderboards');
     //topRoyale.setThumbnail(message.guild.iconURL);
     topRoyale.addField(`**TOP 5 TEXT 💬**`, _topText, true);
     topRoyale.addField(`**TOP 5 VOICE 🎙**`, _voiceText, true);
